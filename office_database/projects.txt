@@ -1,0 +1,25 @@
+#create  the projects table
+
+create table projects (
+    project_id serial primary key,
+    project_name varchar(100) not null,
+    start_date date not null,
+    end_date date,
+    department_id int references departments(department_id)
+);
+
+#inserting records into the projects table
+
+insert into projects (project_name, start_date, end_date, department_id) values
+('project a', '2023-01-15', '2023-05-15', 1),
+('project b', '2023-02-20', '2023-06-20', 2),
+('project c', '2023-03-10', '2023-07-10', 3),
+('project d', '2023-04-05', '2023-08-01', 4),
+('project e', '2023-05-15', '2023-09-10', 5),
+('project f', '2023-06-20', '2023-10-05', 6),
+('project g', '2023-07-10', '2023-11-15', 7),
+('project h', '2023-08-01', '2023-12-20', 8),
+('project i', '2023-09-10', null, 9),
+('project j', '2023-10-05', null, 10),
+('project k', '2023-11-15', null, 11),
+('project l', '2023-12-20', null, 12);

@@ -1,0 +1,22 @@
+#create the departments table
+
+create table departments (
+    department_id serial primary key,
+    department_name varchar(50) not null
+);
+
+#inserting records into the table 
+
+insert into departments (department_name) values
+('sales'),
+('marketing'),
+('finance'),
+('engineering'),
+('human resources'),
+('it'),
+('customer support'),
+('research and development'),
+('production'),
+('legal'),
+('quality assurance'),
+('operations');
