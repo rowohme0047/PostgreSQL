@@ -1,0 +1,21 @@
+#creating movies_actors table juction table
+
+create table movies_actors (
+    movie_id int references movies (movie_id),
+    actor_id  references actors (actor_id),
+   primary key (movie_id, actor_id)  
+    );
+
+insert into movies_actors(movie_id, actor_id) values
+('1','10)
+('5', '14')
+(2, 11),
+(3, 15),
+(4, 12),
+(6, 13),
+(7, 16),
+(8, 17),
+(9, 18),
+(10, 19),
+(11, 20),
+(12, 21);

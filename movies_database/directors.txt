@@ -1,0 +1,28 @@
+#creating directors table
+
+create table actors(
+    director_id serial primary key,
+    first_name varchar(150) not null,
+     last_name varchar(150) not null,
+      dob date,
+       nationality varchar(30),
+      add_date date,
+      update_date date
+  );
+
+#Creating sample records for directors
+
+insert into directors (first_name, last_name, dob, nationality) values
+('sathish', 'kumar', 1995-09-10, 'indian')
+('vijay', 'deva', 1998-10-03, 'indian')
+('nathan', 'drake', 2000-03-15, 'Canadian')
+('Elena', 'Rodriguez', '1989-07-20', 'Spanish'),
+('Alex', 'Smith', '1992-04-30', 'American'),
+('Isabella', 'Garcia', '1993-12-15', 'Mexican'),
+('Hiroshi', 'Tanaka', '1988-02-25', 'Japanese'),
+('Mariusz', 'Nowak', '1991-09-08', 'Polish'),
+('Sophie', 'Dupont', '1996-06-12', 'French'),
+('Ahmed', 'Ali', '1997-03-22', 'Egyptian'),
+('Rajesh', 'Patel', '1987-11-03', 'Indian'),
+('Yuki', 'Suzuki', '1994-08-14', 'Japanese'),
+('Liam', 'O'Brien', '1999-05-27', 'Irish');

@@ -1,0 +1,26 @@
+#creating movie revenue table
+
+create table movies_revenues (
+    revenue_id serial primary key,
+    movie_id int references movie(movie_id)
+    revenues_domestic numeric(10,2)
+    revenues_international numeric(10,2)
+    director_id int references directors (director_id)
+  );
+
+#creating records for movies_revenue_table
+
+insert into movies_revenure(revenue_id,movie_id, revenues_domestic, revenues_international) values
+('1', '45', '22.5', '1.2')
+(2, 1, 50.7, 85.3),
+(3, 2, 35.2, 62.8),
+(4, 3, 18.9, 42.7),
+(5, 4, 75.6, 128.4),
+(6, 5, 64.3, 110.6),
+(7, 6, 12.8, 25.7),
+(8, 7, 28.4, 57.9),
+(9, 8, 9.7, 19.3),
+(10, 9, 42.1, 89.5),
+(11, 10, 56.9, 97.2),
+(12, 11, 19.2, 38.7),
+(13, 12, 68.5, 135.2);

@@ -1,0 +1,29 @@
+#creating movies table
+
+create table movies (
+    movie_id serial primary key,
+    movie_name varchar not null,
+    movie_length int,
+    movie_lang varchar(20),
+    rated varchar(10),
+    release_date date,
+    director_id int references directors (director_id)
+  );
+
+
+#creating record for movies table
+
+insert into movies(movie_name, movie_length, movie_lang, release_date, rated, director_id) values
+('Leo', '124', 'Tamil', 2023-10-19, 'U/A', '12')
+('Killers of the flower moon ', '149', 2023-10-20, '9')
+('raththam', '128', 2023-10-06, 'U/A', '5' )
+('The Secret Garden', '105', 'English', '2023-09-15', 'PG', 7),
+('La La Land', '128', 'English', '2023-08-25', 'PG-13', 2),
+('Dilwale Dulhania Le Jayenge', '189', 'Hindi', '2023-07-10', 'U', 8),
+('Crouching Tiger, Hidden Dragon', '120', 'Mandarin', '2023-06-30', 'PG-13', 12),
+('Spirited Away', '125', 'Japanese', '2023-06-15', 'PG', 10),
+('Pan's Labyrinth', '118', 'Spanish', '2023-05-20', 'R', 4),
+('The Grand Budapest Hotel', '100', 'English', '2023-05-05', 'R', 6),
+('Life Is Beautiful', '116', 'Italian', '2023-04-10', 'PG-13', 3),
+('Slumdog Millionaire', '120', 'English', '2023-03-25', 'R', 8),
+('Parasite', '132', 'Korean', '2023-03-10', 'R', 11);
