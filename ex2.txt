@@ -1,0 +1,75 @@
+#Find the department with the most projects and list its projects.
+
+with project_counts as (
+    select d.department_name, count(p.project_id) as project_count
+    from departments d
+    join projects p on d.department_id = p.department_id
+    group by d.department_name
+)
+select pc.department_name, p.project_name
+from project_counts pc
+join projects p on pc.department_name = p.department_name
+where pc.project_count = (select max(project_count) from project_counts);
+
+#Find the department with the highest average employee salary.
+
+select d.department_name, avg(e.salary) as average_salary
+from departments d
+join employees e on d.department_id = e.department_id
+group by d.department_name
+order by average_salary desc
+limit 1;
+
+
+#Calculate the total revenue for each project, but exclude projects with no end date (NULL).
+
+select p.project_name, sum(mr.revenues_domestic + mr.revenues_international) as total_revenue
+from projects p
+join movies_revenue mr on p.project_id = mr.movie_id
+where p.end_date is not null
+group by p.project_name;
+
+
+#Find the project that generated the highest international revenue.
+
+select p.project_name, max(mr.revenues_international) as highest_international_revenue
+from projects p
+join movies_revenue mr on p.project_id = mr.movie_id
+group by p.project_name
+order by highest_international_revenue desc
+limit 1;
+
+Find the employee with the highest salary in the "Finance" department.
+
+select e.first_name, e.last_name, e.salary
+from employees e
+join departments d on e.department_id = d.department_id
+where d.department_name = 'finance'
+order by e.salary desc
+limit 1;
+
+#List the departments where the number of employees is greater than the average number of employees in all departments.
+
+
+with department_employee_counts as (
+    select department_id, count(*) as num_employees
+    from employees
+    group by department_id
+)
+select d.department_name
+from departments d
+join department_employee_counts dec on d.department_id = dec.department_id
+where dec.num_employees > (select avg(num_employees) from department_employee_counts);
+
+
+#Calculate the average length of projects for each department.
+
+select d.department_name, avg(end_date - start_date) as average_project_length
+from departments d
+join projects p on d.department_id = p.department_id
+where end_date is not null
+group by d.department_name;
+
+
+
+
