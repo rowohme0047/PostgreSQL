@@ -1,0 +1,28 @@
+#List the names of employees who work on projects in the Operations department.
+
+select e.first_name, e.last_name
+from employees e
+join projects p on e.department_id = p.department_id
+where p.department_id = (select department_id from departments where department_name = 'operations');
+
+#Calculate the average length of projects in days.
+
+select avg(end_date - start_date) as average_project_length
+from projects
+where end_date is not null;
+
+#Calculate the total revenue (domestic + international) for each project.
+
+select p.project_name, sum(mr.revenues_domestic + mr.revenues_international) as total_revenue
+from projects p
+join movies_revenue mr on p.project_id = mr.movie_id
+group by p.project_name;
+
+#Retrieve the names of employees who were hired in 2023.
+
+select first_name, last_name
+from employees
+where extract(year from hire_date) = 2023;
+
+
+
