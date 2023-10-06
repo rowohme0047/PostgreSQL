@@ -1,0 +1,37 @@
+#upsert
+
+create table t_tags(
+id serial primary key,
+tag text unique,
+update_date timestamp default now()
+);
+
+insert into t_tags (tag) values
+('Pen'),
+('Pencil');
+
+#youngest female actors 
+
+ select * from actors 
+where gender = 'f'
+order by dob
+fetch first 10  row only
+
+#first 5 movies from the 5th record by long movie length
+
+select * from movies 
+order by movies desc
+fetch first 5 row only
+offset 5
+
+select cast('adnan' as character(10) as "Name 1 ",
+   'Adnan' :: char(10) as "Name 2"
+
+
+select 'romy' :: varchar(10) as "testing"
+
+select revenues_domestic, revenues_international,
+concat(revenues_domestic, revenues_international) as profits
+from movies
+
+
