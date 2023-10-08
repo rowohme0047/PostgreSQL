@@ -1,0 +1,43 @@
+# write a sql query to find the second highest salary from an employees table.
+
+select distinct salary
+from employees
+order by salary desc
+limit 1 offset 1;
+
+#calculate the total number of orders placed by each customer and display the results in descending order
+
+select customer_id, count(*) as order_count
+from orders
+group by customer_id
+order by order_count desc;
+
+#find the employees who have the same salary as their manager.
+
+select e1.employee_name
+from employees e1
+inner join employees e2 on e1.manager_id = e2.employee_id
+where e1.salary = e2.salary;
+
+#calculate the moving average of a specific column (e.g., "price") over the last 3 rows in a table ordered by a date column.
+
+select date_column, 
+       price,
+       avg(price) over (order by date_column rows between 2 preceding and current row) as moving_avg
+from your_table
+order by date_column;
+
+#find the top 3 most sold products in a "sales" table.
+
+select product_id, sum(quantity) as total_sold
+from sales
+group by product_id
+order by total_sold desc
+limit 3;
+
+
+
+
+
+
+
