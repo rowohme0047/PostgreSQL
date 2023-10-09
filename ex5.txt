@@ -1,0 +1,54 @@
+#Find the top 5 highest-grossing movies of all time.
+
+select title, revenue
+from movies
+order by revenue desc
+limit 5;
+
+#list the names of actors who have appeared in at least 5 movies.
+
+select actor_name
+from (
+    select actor_id, count(movie_id) as movie_count
+    from movie_actors
+    group by actor_id
+) as actor_movie_count
+where movie_count >= 5;
+
+#find the movie with the longest runtime.
+
+select title
+from movies
+order by runtime desc
+limit 1;
+
+
+#list the genres that have more than 3 movies released in the year 2020.
+
+select genre
+from (
+    select genre, count(*) as movie_count
+    from movies
+    where release_year = 2020
+    group by genre
+) as genre_movie_count
+where movie_count > 3;
+
+#find the average rating of movies released in the 21st century (2000 onwards).
+
+select avg(rating)
+from movies
+where release_year >= 2000;
+
+#list the top 10 actors who have the most appearances in movies released in the 90s.
+
+select actor_name, count(*) as movie_count
+from movie_actors ma
+join movies m on ma.movie_id = m.id
+where m.release_year >= 1990 and m.release_year <= 1999
+group by actor_name
+order by movie_count desc
+limit 10;
+
+
+
