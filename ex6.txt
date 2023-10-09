@@ -1,0 +1,31 @@
+#find the actor(s) who have acted in the most genres.
+
+select actor_name
+from (
+    select actor_name, count(distinct genre) as genre_count
+    from movie_actors ma
+    join movie_genres mg on ma.movie_id = mg.movie_id
+    group by actor_name
+) as actor_genre_count
+order by genre_count desc
+limit 1;
+
+#list the directors who have directed at least 3 movies with a rating above 8.
+
+select genre, sum(revenue) as total_revenue
+from movie_genres mg
+join movies m on mg.movie_id = m.id
+group by genre;
+
+#find the movie with the most number of actors in it.
+
+select title
+from movies
+where id = (
+    select movie_id
+    from movie_actors
+    group by movie_id
+    order by count(*) desc
+    limit 1
+);
+
